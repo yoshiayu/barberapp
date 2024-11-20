@@ -40,17 +40,23 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "booking",
     "rest_framework",
+    "corsheaders",
+    "django_extensions",
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
+    # "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+MIDDLEWARE.insert(0, "corsheaders.middleware.CorsMiddleware")
 
 ROOT_URLCONF = "barber_booking.urls"
 
@@ -134,3 +140,15 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "booking.User"
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",
+    "https://localhost:8080",
+]
+CSRF_TRUSTED_ORIGINS = [
+    "https://127.0.0.1:8000",
+    "http://localhost:8080",
+]
+
+
+CORS_ALLOW_ALL_ORIGINS = True

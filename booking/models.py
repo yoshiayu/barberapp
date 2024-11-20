@@ -62,7 +62,7 @@ class Service(models.Model):
 # 予約モデル
 class Appointment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    sevice = models.ForeignKey(Service, on_delete=models.CASCADE)
+    service = models.ForeignKey(Service, on_delete=models.CASCADE)
     date = models.DateField()
     time = models.TimeField()
     status = models.CharField(
@@ -70,10 +70,20 @@ class Appointment(models.Model):
         choices=[
             ("booked", "予約済み"),
             ("cancelled", "キャンセル"),
-            ("completed", "Completed"),
+            ("completed", "完了"),
         ],
+        default="booked",
     )
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)  # 作成日時
+    updated_at = models.DateTimeField(auto_now=True)  # 更新日時（任意）
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["date", "time", "service"],
+                name="unique_appointment_per_service",
+            )
+        ]
 
     def __str__(self):
         return f"{self.user.name} - {self.date} {self.time}"
@@ -98,3 +108,13 @@ class Inquiry(models.Model):
 
     def __str__(self):
         return f"Inquiry by {self.user.name if self.user else 'Anonymous'}"
+
+
+class Reservation(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    date = models.DateField()
+    time = models.TimeField()
+
+    def __str__(self):
+        return f"{self.name} - {self.date} {self.time}"

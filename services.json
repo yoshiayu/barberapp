@@ -1,0 +1,62 @@
+[
+{
+    "model": "booking.service",
+    "pk": 1,
+    "fields": {
+        "name": "カット",
+        "duration": 30,
+        "price": "2000.00",
+        "image": ""
+    }
+},
+{
+    "model": "booking.service",
+    "pk": 2,
+    "fields": {
+        "name": "カラー",
+        "duration": 60,
+        "price": "5000.00",
+        "image": ""
+    }
+},
+{
+    "model": "booking.service",
+    "pk": 3,
+    "fields": {
+        "name": "カット＋カラー",
+        "duration": 90,
+        "price": "7000.00",
+        "image": ""
+    }
+},
+{
+    "model": "booking.service",
+    "pk": 4,
+    "fields": {
+        "name": "カット",
+        "duration": 30,
+        "price": "2000.00",
+        "image": ""
+    }
+},
+{
+    "model": "booking.service",
+    "pk": 5,
+    "fields": {
+        "name": "カラー",
+        "duration": 60,
+        "price": "5000.00",
+        "image": ""
+    }
+},
+{
+    "model": "booking.service",
+    "pk": 6,
+    "fields": {
+        "name": "カット＋カラー",
+        "duration": 90,
+        "price": "7000.00",
+        "image": ""
+    }
+}
+]
